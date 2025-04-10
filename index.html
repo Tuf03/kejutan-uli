@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kejutan Spesial untukmu!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background: linear-gradient(to bottom, #ffe9ec, #f5faff);
+      color: #333;
+      text-align: center;
+      padding: 0 1rem;
+    }
+
+    header {
+      background: linear-gradient(90deg, #ff8ac4, #fda085);
+      padding: 40px 20px;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    h1, h2, p {
+      margin: 20px 0;
+    }
+
+    .teks-kedip {
+      font-size: 36px;
+      font-weight: 700;
+      animation: kedip 1s infinite;
+      position: relative;
+      display: inline-block;
+    }
+
+    @keyframes kedip {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    .emotikon {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      font-size: 24px;
+      animation: terbang 3s infinite ease-in-out;
+      opacity: 0;
+    }
+
+    @keyframes terbang {
+      0% {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateX(-50%) translateY(-120px);
+        opacity: 0;
+      }
+    }
+
+    .emotikon:nth-child(2) { left: 45%; animation-delay: 0s; }
+    .emotikon:nth-child(3) { left: 55%; animation-delay: 0.5s; }
+    .emotikon:nth-child(4) { left: 40%; animation-delay: 1s; }
+    .emotikon:nth-child(5) { left: 60%; animation-delay: 1.5s; }
+    .emotikon:nth-child(6) { left: 43%; animation-delay: 2s; }
+    .emotikon:nth-child(7) { left: 57%; animation-delay: 2.5s; }
+    .emotikon:nth-child(8) { left: 50%; animation-delay: 3s; }
+
+    .login-form {
+      margin-top: 30px;
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .login-input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    .login-button {
+      background: linear-gradient(to right, #ff6a88, #ff99ac);
+      color: white;
+      padding: 12px;
+      border: none;
+      width: 100%;
+      border-radius: 8px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .login-button:hover {
+      background: linear-gradient(to right, #fc4a76, #ff8297);
+    }
+
+    .content {
+      display: none;
+      padding: 20px;
+    }
+
+    .surprise {
+      font-size: 24px;
+      font-weight: bold;
+      color: #ff5e57;
+    }
+
+    .button {
+      background-color: #6c5ce7;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #4834d4;
+    }
+
+    .gift-image {
+      width: 100%;
+      max-width: 300px;
+      margin: 20px auto;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .gift-gallery {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 14px;
+      color: #999;
+    }
+    /* Tambahan untuk animasi gambar muncul satu per satu */
+  .fade-image {
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 1s ease, transform 0.8s ease;
+  }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="teks-kedip">
+      SELAMAT DATANG🌟
+      <div class="emotikon">🌸</div>
+      <div class="emotikon">💖</div>
+      <div class="emotikon">🌼</div>
+      <div class="emotikon">🌹</div>
+      <div class="emotikon">💞</div>
+      <div class="emotikon">💐</div>
+      <div class="emotikon">❤️</div>
+    </div>
+  </header>
+
+  <div class="login-form">
+    <h2>Masukkan Username & Password</h2>
+    <input type="text" id="username" class="login-input" placeholder="User" required>
+    <input type="password" id="password" class="login-input" placeholder="Password" required>
+    <button class="login-button" onclick="login()">Login</button>
+  </div>
+
+  <div class="content" id="content">
+    <p>Halo, <strong id="user-name"></strong>!</p>
+    <p class="surprise">Aku punya kejutan untukmu!</p>
+    <button class="button" onclick="showGift()">Lihat Kejutan 🎁</button>
+
+    <div id="gift" style="display:none;">
+      <h2>Kejutanmu adalah:</h2>
+      <div class="gift-gallery">
+        <!-- Gambar dan puisi tetap -->
+        <img src="img/gambar1.jpg" alt="Kejutan 1" class="gift-image fade-image">
+        <br>
+        <p> Dalam sunyi, kau hadir bagai cahaya,<br>
+            tak gemerlap—namun hangat, meresap jiwa. <br>
+            Uli, namamu lembut memeluk luka, <br>
+            membisikkan tenang di tengah gelisah dunia. <br> <br>
+            
+            Bukan hanya wajahmu yang menawan, <br>
+            tapi caramu mendengar, caramu memahami—
+            itulah keelokan sejati, <br>
+            yang tak lekang meski waktu pergi.</p> <br>
+            <img src="img/gambar2.jpg" alt="Kejutan 2" class="gift-image fade-image">
+        <br>
+        <p>Di setiap langkahmu, ada bijak yang bicara, <br>
+            bukan suara keras, melainkan hati yang dewasa. <br>
+            Uli, engkau bukan hanya elok dalam rupa, <br>
+            tapi dalam cara kau mencintai tanpa cela. <br><br>
+            
+            Tak banyak bicara, namun makna membuncah, <br>
+            membuat kami merasa cukup, meski hidup resah. <br>
+            Engkau adalah puisi itu sendiri, <br>
+            tak ditulis—namun dirasakan, abadi.</p>
+            <br>
+            <img src="img/gambar3.jpg" alt="Kejutan 3" class="gift-image fade-image">
+        <p>
+            Ada perempuan yang bersinar tanpa sorotan, <br>
+            yang mencintai tanpa mengikat, <br>
+            yang mendewasa tanpa memaksa. <br>
+            Itulah engkau, Uli, <br>
+            anggun dalam tutur, <br>
+            lembut dalam sikap, <br>
+            tegas dalam nilai yang kau genggam erat. <br> <br>
+            
+            Engkau bukan sekadar cantik, <br>
+            engkau adalah ketenangan yang dicari <br>
+            dalam dunia yang sibuk berlari.</p> <br>
+            <img src="img/gambar4.jpg" alt="Kejutan 4" class="gift-image fade-image">
+        <p>Uli, engkau ibarat pagi yang datang pelan, <br>
+            tidak mengagetkan, tapi menyejukkan. <br>
+            Dewasamu bukan karena usia, <br>
+            tapi karena luka yang kau peluk dengan bijaksana. <br>
+            <br>
+            Kecantikanmu bukan hanya pada paras, <br>
+            namun pada sikap yang tak lekas goyah. <br>
+            Kau ajarkan arti tenang saat badai tiba, <br>
+            dan itu… jauh lebih indah dari rupa semata.</p><br>
+            <br>
+            <br>
+            <img src="img/gambar6.png" alt="kejutan6" class="gift-image fade-image">
+            <br>
+            <p  >salam hangat dari saya Tufa'il Ashabi</p>
+            <br>
+            <img src="img/gambar8.png" alt="kejutan8" class="gift-image fade-image">
+      </div>
+      <hr>
+      <p>Aku sediakan musik untuk kau dengar, tolong dengarkan!</p>
+      <br>
+      <audio controls>
+          <source src="audio/@coldplay - Fix You (Lyrics).mp3" type="audio/mpeg">
+          Browser Anda tidak mendukung audio tag.
+        </audio>
+        <hr>
+    <p>Semoga kamu senang! ❤️ <br> maaf jika caraku alay ataupun norak jujur aku minder dan benar-benar pesimis mau mulai dari mana, karena aku banyak sekali kekurangan, penampilan biasa saja sifatku mungkin banyak buruknya tapi aku hanya ingin mengenalmu lebih dekat dan lebih dalam lagi, <br>❤️semoga kamu senang masa depanku❤️</p>
+    </div>
+    
+        <br>
+  <footer>
+    &copy; Created by Tufa'il Ashabi.
+  </footer>
+
+  <script>
+    function login() {
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    if (username === "ULI" && password === "ULI123%") {
+      document.getElementById('user-name').innerText = username;
+      document.getElementById('content').style.display = 'block';
+      document.querySelector('.login-form').style.display = 'none';
+    } else {
+      alert('Nama pengguna atau Password salah. Silakan coba lagi.');
+    }
+  }
+
+  function showGift() {
+    const gift = document.getElementById('gift');
+    gift.style.display = 'block';
+
+    // Ambil semua gambar yang ada dalam .gift-gallery
+    const images = gift.querySelectorAll(".gift-gallery img");
+    images.forEach((img, index) => {
+      setTimeout(() => {
+        img.classList.add('fade-image-visible');
+        img.style.opacity = 1;
+        img.style.transform = 'scale(1)';
+      }, index * 700); // jeda antar gambar 0.7 detik
+    });
+  }
+  </script>
+
+</body>
+</html>
